@@ -76,20 +76,24 @@ pipeline {
         stage('docker build') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-    
-
                 sh '''
                   ls
                   docker build -t $imagetag .
                   docker login -u murulii -p $dockerhub
                   docker push $imagetag
-                  
-
-                '''
+                  '''
             }
         }
         }
+         
 
+
+         stage('Trivy Image Scan ') {
+            steps {
+                sh 'trivy image $imagetag > trivyimagescanoutput.txt' 
+                
+            }
+        }
 
 
     }
