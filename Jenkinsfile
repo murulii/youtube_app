@@ -64,7 +64,19 @@ pipeline {
             }
         }
 
+        
 
+
+        stage('docker build') {
+            steps {
+                sh '''
+                  ls
+                  docker build -t youtube:1.0.1 .
+                  
+
+                '''
+            }
+        }
 
 
 
