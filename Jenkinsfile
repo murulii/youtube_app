@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Git clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/murulii/youtube_app.git'
             }
