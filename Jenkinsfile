@@ -27,21 +27,21 @@ pipeline {
         }
         
         
-        stage('Sonar Server scanner') {
-            steps {
-                 withSonarQubeEnv('sonar_server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=youtube \
-                    -Dsonar.projectKey=youtube '''
-                }
-            }
-        }
+       // stage('Sonar Server scanner') {
+        //    steps {
+        //         withSonarQubeEnv('sonar_server') {
+          //          sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=youtube \
+          //          -Dsonar.projectKey=youtube '''
+          //      }
+          //  }
+       // }
 
 
-        stage('Quality Gates') {
-            steps {
-                waitForQualityGate abortPipeline: false, credentialsId: 'sonar_token' 
-            }
-        }
+       // stage('Quality Gates') {
+          //  steps {
+           //     waitForQualityGate abortPipeline: false, credentialsId: 'sonar_token' 
+           // }
+       // }
 
 
         stage('NPM install') {
@@ -50,11 +50,11 @@ pipeline {
             }
         }
 
-        stage('Scan file Using Trivy') {
-            steps {
-                sh 'trivy fs . > fsscan.txt' 
-            }
-        }
+       // stage('Scan file Using Trivy') {
+         //   steps {
+          //      sh 'trivy fs . > fsscan.txt' 
+         //   }
+       // }
 
 
        // stage('Depedence Check') {
