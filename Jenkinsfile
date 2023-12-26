@@ -70,15 +70,20 @@ pipeline {
 
         stage('docker build') {
             steps {
+                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+    
+
                 sh '''
                   ls
                   docker build -t murulii/youtube:1.0.1 .
+                  docker login -u murulii -p dockerhub
+                  docker push murulii/youtube:1.0.1
                   
 
                 '''
             }
         }
-
+        }
 
 
 
