@@ -3,7 +3,7 @@ pipeline {
 
     tools{
 
-        npm 'npm'
+        nodejs 'npm'
         jdk 'jdk'
     }
 
