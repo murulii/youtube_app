@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-    
+    envirnoment{
+        SCANNER_HOME= tool 'sonar-scanner'
+    }
     
     stages {
         stage('Clean WS') {
@@ -19,8 +21,21 @@ pipeline {
         }
         
         
-        
+        stage('Sonar Server scanner') {
+            steps {
+                 withSonarQubeEnv('sonar_server') {
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=youtube \
+                    -Dsonar.projectKey=youtube '''
+                }
+            }
+        }
 
+
+        stage('Quality Gates') {
+            steps {
+                waitForQualityGate abortPipeline: false, credentialsId: 'sonar_token' 
+            }
+        }
 
 
 
