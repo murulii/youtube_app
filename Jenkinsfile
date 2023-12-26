@@ -88,7 +88,7 @@ pipeline {
          
 
 
-         stage('Trivy Image Scan ') {
+         stage('Trivy Image Scans ') {
             steps {
                 sh 'trivy image $imagetag > trivyimagescanoutput.txt' 
                 
