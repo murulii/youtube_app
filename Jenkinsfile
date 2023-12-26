@@ -9,6 +9,10 @@ pipeline {
 
     environment{
         SCANNER_HOME= tool 'sonar-scanner'
+        dockeruser = "murulii"
+        imagename = "youtube"
+        tag = "1.0."
+        imagetag = "${murulii}" + "/" + "${imagename}" + ":" + "${tag}" + "${BUILD_NUMBER}"  
         
     }
     
@@ -48,6 +52,7 @@ pipeline {
         stage('NPM install') {
             steps {
                 sh 'npm install' 
+                sh ' echo $imagetag '
             }
         }
 
@@ -75,7 +80,9 @@ pipeline {
 
                 sh '''
                   ls
-                  docker build -t murulii/youtube:1.0.1 .
+                  docker build -t $dockeruser
+                  
+                  murulii/youtube:1.0.1 .
                   docker login -u murulii -p $dockerhub
                   docker push murulii/youtube:1.0.1
                   
