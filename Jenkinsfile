@@ -9,6 +9,7 @@ pipeline {
 
     environment{
         SCANNER_HOME= tool 'sonar-scanner'
+        
     }
     
     stages {
@@ -71,7 +72,7 @@ pipeline {
             steps {
                 sh '''
                   ls
-                  docker build -t youtube:1.0.1 .
+                  docker build -t murulii/youtube:1.0.1 .
                   
 
                 '''
