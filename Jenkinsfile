@@ -50,6 +50,12 @@ pipeline {
             }
         }
 
+        stage('Scan file Using Trivy') {
+            steps {
+                sh 'trivy fs . > fsscan.txt' 
+            }
+        }
+
 
 
 
