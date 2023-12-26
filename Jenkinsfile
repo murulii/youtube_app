@@ -4,7 +4,7 @@ pipeline {
     
     
     stages {
-        stage('Clean WSw') {
+        stage('Clean WS') {
             steps {
                 deleteDir()
             }
@@ -12,7 +12,7 @@ pipeline {
     
 
     
-        stage('Git clones') {
+        stage('Git clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/murulii/youtube_app.git'
             }
