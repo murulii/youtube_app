@@ -1,6 +1,11 @@
 pipeline {
     agent any
+    
 
+    environment {
+
+        sonar_server = 'sonar_server'
+    }
 
 
 
