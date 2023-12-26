@@ -22,7 +22,7 @@ pipeline {
     
 
     
-        stage('Git clone') {
+        stage('Git clones') {
             steps {
                 git branch: 'main', url: 'https://github.com/murulii/youtube_app.git'
             }
