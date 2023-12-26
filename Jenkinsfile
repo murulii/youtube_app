@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('Clean WS') {
             steps {
-                deletesDir()
+                deleteDir()
             }
         }
     
 
     
-        stage('Git clonee') {
+        stage('Git clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/murulii/youtube_app.git'
             }
