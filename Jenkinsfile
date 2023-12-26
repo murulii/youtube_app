@@ -4,7 +4,7 @@ pipeline {
 
     environment {
 
-        sonar_server = 'sonar_server'
+        SCANNER_HOME =tool 'sonar_server'
     }
 
 
