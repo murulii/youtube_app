@@ -107,11 +107,28 @@ pipeline {
                  sed -i "s/${imagename}.*/${imageandtag}/g" dep.yml
                  cat dep.yml
 
-                ''' 
-                
+                '''                
             }
             }
         }
+             
+
+             stage('Dep push to Git') {
+            steps {
+                 git branch: 'main', credentialsId: 'gitlogin', url: 'https://github.com/murulii/youtube_app.git'
+                 dir('yml') {
+                 sh '''
+                  git add dep.yml
+                  git commit -m "updating"
+                  git push
+                 '''
+                 }
+
+
+
+            }
+        }
+
 
 
 
