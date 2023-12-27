@@ -12,7 +12,8 @@ pipeline {
         dockeruser = "murulii"
         imagename = "youtube"
         tag = "1.0."
-        imagetag = "${dockeruser}" + "/" + "${imagename}" + ":" + "${tag}" + "${BUILD_NUMBER}"  
+        imagetag = "${dockeruser}" + "/" + "${imagename}" + ":" + "${tag}" + "${BUILD_NUMBER}"
+        imageandtag = "${imagename}" + ":" + "${tag}" + "${BUILD_NUMBER}"  
         
     }
     
@@ -88,14 +89,34 @@ pipeline {
          
 
 
-         stage('Trivy Image Scans ') {
+        stage('Trivy Image Scans ') {
             steps {
                 sh 'trivy image $imagetag > trivyimagescanoutput.txt' 
                 
             }
         }
         
+        stage('Trivy Image Scans ') {
+            steps {
+                sh 'trivy image $imagetag > trivyimagescanoutput.txt' 
+                
+            }
+        }
         
+
+        stage('Updating Yml File') {
+            steps {
+                dir('yml') {
+                sh '''
+                 cat dep.yml
+                 sed -i "/${imagename}.*/${imageandtag}/"
+                 cat dep.yml
+
+                ''' 
+                
+            }
+            }
+        }
 
 
 
