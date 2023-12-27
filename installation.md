@@ -1,15 +1,15 @@
 # Argocd 
-
+```
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 helm install argocd argo/argo-cd
+```
 
-
-To get access Argocd GUI
-
+# To get access Argocd GUI
+```
 kubectl port-forward svc/argocd-server 8080:443
 kubectl edit service/argocd-server    ##edit argocd server to NodePort /Loadbalancer
-
+```
 ## Install ArgoCD CLI in Cloud Shell (GCP)
 
 ```
