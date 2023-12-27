@@ -78,7 +78,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
                 sh '''
                   ls
-                  docker build -t $imagetag .
+                  docker build -e REACT_APP_RAPID_API_KEY=47e9a57e19msh039731b18bab9eep11a497jsn9684004925d0 -t $imagetag .
                   docker login -u murulii -p $dockerhub
                   docker push $imagetag
                   '''
@@ -94,6 +94,9 @@ pipeline {
                 
             }
         }
+        
+        
+
 
 
     }
