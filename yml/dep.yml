@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: youtub2e
-        image: sevenajay/youtube:1.0.42
+        image: sevenajay/youtube:1.0.43
         ports:
         - containerPort: 3000
 ---
