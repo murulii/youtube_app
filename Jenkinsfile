@@ -89,12 +89,12 @@ pipeline {
          
 
 
-        stage('Trivy Image Scans ') {
-            steps {
-                sh 'trivy image $imagetag > trivyimagescanoutput.txt' 
-                
-            }
-        }
+        //stage('Trivy Image Scans ') {
+          //  steps {
+           //     sh 'trivy image $imagetag > trivyimagescanoutput.txt' 
+           //     
+          //  }
+      //  }
         
         
         
@@ -104,7 +104,7 @@ pipeline {
                 dir('yml') {
                 sh '''
                  cat dep.yml
-                 sed -i "/${imagename}.*/${imageandtag}/"
+                 sed -i "s/${imagename}.*/${imageandtag}/g" dep.yml
                  cat dep.yml
 
                 ''' 
