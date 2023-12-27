@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: youtub2e
-        image: murulii/youtube:1.0.68
+        image: murulii/youtube:1.0.69
         ports:
         - containerPort: 3000
 ---
