@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: youtube-deployment
+  name: youtub2e-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: youtube
+      app: youtub2e
   template:
     metadata:
       labels:
-        app: youtube
+        app: youtub2e
     spec:
       containers:
-      - name: youtube
+      - name: youtub2e
         image: murulii/youtube:1.0.22
         ports:
         - containerPort: 3000
@@ -21,10 +21,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: youtube-service
+  name: youtub2e-service
 spec:
   selector:
-    app: youtube
+    app: youtub2e
   ports:
     - protocol: TCP
       port: 3000
