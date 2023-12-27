@@ -115,14 +115,19 @@ pipeline {
 
              stage('Dep push to Git') {
             steps {
-                 git branch: 'main', credentialsId: 'gitlogin', url: 'https://github.com/murulii/youtube_app.git'
-                 dir('yml') {
-                 sh '''
-                  git add dep.yml
-                  git commit -m "updating"
-                  git push
-                 '''
-                 }
+                 
+                       withCredentials([gitUsernamePassword(credentialsId: 'gitlogin', gitToolName: 'Default')]) {
+
+                        dir('yml') {
+                        
+                        sh 'git checkout -b main || git checkout main'
+                        sh '''
+                            git add dep.yml
+                            git commit -m "Commit message"
+                            git push origin HEAD:main
+                        '''
+                       }
+                       }
 
 
 
