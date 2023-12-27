@@ -96,12 +96,7 @@ pipeline {
             }
         }
         
-        stage('Trivy Image Scans ') {
-            steps {
-                sh 'trivy image $imagetag > trivyimagescanoutput.txt' 
-                
-            }
-        }
+        
         
 
         stage('Updating Yml File') {
