@@ -1,7 +1,7 @@
 def COLOR_MAP = [
-    'FAILURE' : 'danger',
-    'SUCCESS' : 'good'
-]
+    'FAILURE': 'danger',
+    'SUCCESS': 'good'
+                ]
 
 
 pipeline {
@@ -140,7 +140,7 @@ pipeline {
             }
         }
 
-
+}
 
     post {
          always {
@@ -156,5 +156,5 @@ pipeline {
 
 
 
-    }
+    
 }
